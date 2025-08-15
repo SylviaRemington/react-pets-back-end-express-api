@@ -24,7 +24,7 @@ const Pet = require('../models/pet.js');
 router.post('/', async (req, res) => {
   try {
     // Create a new pet with the data from req.body
-    // const createdPet = await Pet.create(req.body); //sending data to create a pet with // & then going to send it back 201 to the user with the front end// so it's going to be stored in the database
+    const createdPet = await Pet.create(req.body); //sending data to create a pet with // & then going to send it back 201 to the user with the front end// so it's going to be stored in the database
     res.status(201).json(createdPet); // 201 Created
   } catch (err) {
     // Setup for error handling
