@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const logger = require('morgan');
+// See Module 3 - Pets Back-End - last page of lesson for CORS information
 const cors = require('cors');
 
 // Import the controller file
