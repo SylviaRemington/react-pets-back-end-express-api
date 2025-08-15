@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const logger = require('morgan');
+const cors = require('cors');
 
 // Import the controller file
 const petRouter = require('./controllers/pets.js');
@@ -19,7 +20,8 @@ mongoose.connection.on('connected', () => {
 // Middleware
 app.use(express.json());
 app.use(logger('dev'));
-app.use(cors());
+app.use(cors()); //not sure if I use this here or the one below
+app.use(cors({ origin: 'http://localhost:5173' })); //not sure if I use this or the one above
 
 
 // Routes go here
