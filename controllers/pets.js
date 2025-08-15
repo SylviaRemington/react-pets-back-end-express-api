@@ -6,6 +6,11 @@ const router = express.Router();
 // adding the import statement for Pet here from the models:
 const Pet = require('../models/pet.js');
 
+
+// __________________________________________________________________________________________________
+
+// CREATE ROUTE BELOW
+
 // defining the route - using the POST method on the router object to create the route
 // and pass in the path and a callback function:
 // CREATE - POST - /pets
@@ -18,6 +23,7 @@ const Pet = require('../models/pet.js');
 // ANYTIME WHEN BUILD OUT A REST API, USE POSTMAN TO TEST IT SINCE IT'S A JSON AND YOU CAN'T TEST IT BY SEEING IT IN THE BROWSER LIKE WE COULD WITH EJS
 // You'll see what that route does.
 
+// ---------
 
 // Replacing above with what is below here -  create - post - /pets route which just sends a message with this create a pet route
 // CREATE - POST - /pets
@@ -35,6 +41,54 @@ router.post('/', async (req, res) => {
 
 // (201) - Be sure to include a status of 201 Created with your json response body.
 
+
+// __________________________________________________________________________________________________
+
+// GET ROUTE BELOW - READ INDEX ROUTE
+
+// READ - GET - /pets
+router.get('/', async (req, res) => {
+  try {
+    const foundPets = await Pet.find();
+    res.status(200).json(foundPets);  // 200 OK
+  } catch (err) {
+    // Add error handling code
+    res.status(500).json({ err: err.message }); // 500 Internal Server Error
+  }
+});
+
+
+
+
+
+// __________________________________________________________________________________________________
+
+
+
+__________________________________________________________________________________________________
+
+
+
+
+__________________________________________________________________________________________________
+
+
+
+
+
+__________________________________________________________________________________________________
+
+
+
+
+
+__________________________________________________________________________________________________
+
+
+
+
+
+__________________________________________________________________________________________________
 
 
 
