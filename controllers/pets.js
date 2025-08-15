@@ -29,6 +29,7 @@ router.post('/', async (req, res) => {
     res.status(201).json(createdPet); // 201 Created
   } catch (err) {
     // Setup for error handling
+    res.status(500).json({ err: err.message }); //if there is an error we'll return this error message
   }
 });
 
