@@ -23,7 +23,7 @@ app.use(logger('dev'));
 
 // Routes go here
 // Add the petRouter to the `/pets` route
-// All requests that we send to our application, if we want it to be sent to our pet router, it needs to be prepended with /pets
+// All requests that we send to our application, if we want them to be handled by our pets router & sent to our pet router, it needs to be prepended with /pets
 app.use('/pets', petRouter);
 
 
