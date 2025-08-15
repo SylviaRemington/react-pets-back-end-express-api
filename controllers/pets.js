@@ -67,6 +67,7 @@ router.get('/:petId', async (req, res) => {
   try {
     // Add query to find a single pet
     const foundPet = await Pet.findById(req.params.petId);
+    // req.params is in the url & query strings are after the question mark
     res.status(200).json(foundPet); // 200 OK
   } catch (err) {
     // Setup for error handling
