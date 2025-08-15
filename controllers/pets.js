@@ -72,14 +72,18 @@ router.get('/:petId', async (req, res) => {
     if (!foundPet) {
       res.status(404);
       throw new Error('Pet not found.');
+    //when we throw, we send this to the catch block for error. So this becomes the error.
     }
+    res.status(200).json(foundPet);
   } catch (err) {
-    // Setup for error handling
-    res.status(500).json({ err: err.message }); // 500 is an Internal Server Error
-
+    if (res.statusCode === 404) {
+      res.json({ err: err.message });
+    } else {
+      // Add else statement to handle all other errors
+      res.status(500).json({ err: err.message });
+    }
   }
 });
-
 
 // __________________________________________________________________________________________________
 
