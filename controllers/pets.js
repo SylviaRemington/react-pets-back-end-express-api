@@ -62,6 +62,18 @@ router.get('/', async (req, res) => {
 // __________________________________________________________________________________________________
 
 // SHOW ROUTE BELOW
+// READ - GET - /pets/:petId
+router.get('/:petId', async (req, res) => {
+  try {
+    // Add query to find a single pet
+    const foundPet = await Pet.findById(req.params.petId);
+    res.status(200).json(foundPet); // 200 OK
+  } catch (err) {
+    // Setup for error handling
+    res.status(500).json({ err: err.message }); // 500 is an Internal Server Error
+
+  }
+});
 
 
 // __________________________________________________________________________________________________
