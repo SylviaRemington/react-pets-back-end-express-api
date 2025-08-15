@@ -68,7 +68,11 @@ router.get('/:petId', async (req, res) => {
     // Add query to find a single pet
     const foundPet = await Pet.findById(req.params.petId);
     // req.params is in the url & query strings are after the question mark
-    res.status(200).json(foundPet); // 200 OK
+    // res.status(200).json(foundPet); // 200 OK
+    if (!foundPet) {
+      res.status(404);
+      throw new Error('Pet not found.');
+    }
   } catch (err) {
     // Setup for error handling
     res.status(500).json({ err: err.message }); // 500 is an Internal Server Error
