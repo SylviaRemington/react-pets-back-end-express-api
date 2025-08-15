@@ -12,3 +12,5 @@ const petSchema = mongoose.Schema({
 // registering the model
 const Pet = mongoose.model('Pet', petSchema);
 
+// exporting the model
+module.exports = Pet;
