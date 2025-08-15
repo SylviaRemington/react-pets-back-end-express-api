@@ -9,7 +9,7 @@ const Pet = require('../models/pet.js');
 
 // __________________________________________________________________________________________________
 
-// CREATE ROUTE BELOW
+// CREATE ROUTE BELOW -- Creates new pets!
 
 // defining the route - using the POST method on the router object to create the route
 // and pass in the path and a callback function:
@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
 
 // __________________________________________________________________________________________________
 
-// INDEX ROUTE BELOW
+// INDEX ROUTE BELOW -- Reading all the pets! Getting them and reading them.
 // GET ROUTE BELOW - READ INDEX ROUTE
 
 // READ - GET - /pets
@@ -61,7 +61,7 @@ router.get('/', async (req, res) => {
 
 // __________________________________________________________________________________________________
 
-// SHOW ROUTE BELOW
+// SHOW ROUTE BELOW -- Gets one petId via find by Id and then has a try catch with a throw in there. 
 // READ - GET - /pets/:petId
 router.get('/:petId', async (req, res) => {
   try {
@@ -87,13 +87,30 @@ router.get('/:petId', async (req, res) => {
 
 // __________________________________________________________________________________________________
 
+// DELETE ROUTE
+// DELETE - DELETE - /pets/:petId
 
+router.delete("/:petId", async (req, res) => {
+  try {
+    await Pet.findByIdAndDelete(req.params.petId);
+    return res.status(204).json({});
+  } catch (err) {
+    res.status(500).json({ err: err.message });
+  }
+});
 
 
 // __________________________________________________________________________________________________
 
-
-
+// UPDATE - PUT - /pets/:petId
+router.put("/:petId", async (req, res) => {
+  try {
+    const updatedPet = await Pet.findByIdAndUpdate(req.params.petId, req.body);
+    res.status(200).json(updatedPet);
+  } catch (err) {
+    res.status(500).json({ err: err.message });
+  }
+});
 
 
 // __________________________________________________________________________________________________
