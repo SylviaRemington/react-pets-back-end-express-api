@@ -9,7 +9,7 @@ const petSchema = mongoose.Schema({
   breed: String,
 });
 
-// registering the model
+// registering the model - running it through mongoose schema to create the model
 const Pet = mongoose.model('Pet', petSchema);
 
 // exporting the model
